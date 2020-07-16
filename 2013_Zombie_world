@@ -1,0 +1,80 @@
+One day Bob is playing Zombie World game (video game). In Zombie World video game each round will consisting  of N zombie's & each zombie's energy is Zi where 1<=i<=N . Bob will start the round of game  with B energy. In order to move to the next level of game  Bob need to kill all the N zombie's of game but Bob can select any 1 among N Zombie's of game . If energy of Bob (B) is less than Zombie energy (Zi) of game  then Bob will die & lose the round else Bob will won, during the fighting with zombie of game , Bob player will lose his energy by (Zi%2)+(Zi/2) in game . At any point of Zombie World game Bob will play optimally. Now your objective is to find out whether Bob can reach to the next level of game or not.
+
+Input Format
+
+First line : B & N separated by space
+where  
+B is the energy of Bob 
+N is the number of Zombie. 
+Next line : N spaced integers each will represent the energy of zombie in Zombie World video game .
+
+Constraints 
+1<=N<=10^4
+1<=B<=10^9
+1<=Zi<=10^5
+
+Output Format
+
+Depending upon whether Bob can reach the next level of video game or not Print "YES" or "NO" 
+
+Sample Input and Output
+
+ SNo.	 Input	  Output
+ 1	
+ 35 3
+ 5 9 6
+ YES
+ 2	
+ 456 68
+ a
+ Invalid Input 
+ 3	
+ 4 4
+ 1 3 2 4
+ NO
+ 
+ 
+ 
+ //code
+ /* package codechef; // don't place package name! */
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+/* Name of the class has to be "Main" only if the class is public. */
+class Codechef
+{
+	public static void main (String[] args) throws java.lang.Exception
+	{
+		// your code goes here
+		int B=0, N,temp;    
+  Scanner sc = new Scanner(System.in);
+  try{ 
+   B = Integer.parseInt(sc.next().trim());
+   N = Integer.parseInt(sc.next().trim());
+   //int a;
+   ArrayList<Integer> ls = new ArrayList<Integer>();
+   for(int i=0; i<N; i++){
+       int a = sc.nextInt();
+       ls.add(a);
+   }
+   Collections.sort(ls, Collections.reverseOrder());
+    for (int i = 0; i < N; ++i) {
+    temp = ls.get(i);
+    B = B - ((temp % 2) + (temp / 2));
+   }
+   
+   }
+  catch(Exception e){
+   System.out.println("Invalid Input");
+   System.exit(0);
+  }
+  if(B>0)
+  System.out.println("YES");
+  else
+  System.out.println("NO");
+
+    
+	}
+}
