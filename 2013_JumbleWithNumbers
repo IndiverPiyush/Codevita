@@ -1,0 +1,24 @@
+In NASA, 2 researchers, Mathew & John, started their work on a brand new planet, but while practicing on that research they faced a mathematical issue . In order to save the time Mathew & John divided their work. So NASA scientist Mathew worked on a piece & invented a number  calculated with the following formula:  
+NASA researcher Mathew number is computed as follows by  using the following formula: H(n) = n(2n-1) 
+NASA scientist John invented another number which is built by the following formula which is also called as John number. T(n) = n(n+1)/2 
+Now NASA, 2 researchers ,Mathew & John are jumbled while combining their work. Now help Mathew & John combine their research work by searching out number in a given range that satisfies both properties. Using the above formula, the 1st few NASA researcher Mathew-John numbers are: 1 6 15 28 …
+Input Format
+
+i/p consists of THREE integers as follow : T1 ,T2 and M separated by space .
+T1 upper limits  & T2 are  lower limits of the range. The range is inclusive of both T1 & T2. Find Mth number in the range [T1,T2] which is actually a  NASA researcher Mathew-John number.
+
+Constraints
+0 < T1 < T2 < 1000000
+
+Output Format
+
+Print out Mth number from formed sequence between T1 & T2 :
+
+
+SNo.	Input	Output
+1               	90 150 2             	120
+2	20 80 6	No number is present at this index
+3	-5 3 a	Invalid Input
+
+
+// code
