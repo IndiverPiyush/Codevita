@@ -81,4 +81,68 @@ print(ans)
                
           
 // Java Code
-//written by indiver Piyush
+/* package codechef; // don't place package name! */
+// Written by Indiver Piyush
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+/* Name of the class has to be "Main" only if the class is public. */
+class Codechef
+{
+	public static void main (String[] args) throws java.lang.Exception
+	{
+		// your code goes here
+		Scanner sc = new Scanner(System.in);
+		String text = sc.nextLine();
+		ArrayList<Integer> counter = new ArrayList<Integer>();
+		int ans = 0;
+		int count , special_count;
+		text = text.replaceAll("\\p{Punct}","");
+		String text_lower = text.toLowerCase();
+		String[] text_list = text_lower.split(" ");
+	    int n = Integer.parseInt(sc.next().trim());
+	    int low = Integer.parseInt(sc.next().trim());
+	    int up = Integer.parseInt(sc.next().trim());
+	    ArrayList<String> special = new ArrayList<String>();
+	    for(int i=0;i<n;i++){
+	        special.add((sc.next()).toLowerCase());
+	    }
+	    //System.out.println(text_lower);
+	    //System.out.println(Arrays.toString(text_list));
+	    //System.out.println(special);
+	    for(int i=0;i<text_list.length;i++){
+	        if(special.contains(text_list[i])){
+	            String new_special = text_list[i];
+	            count = 0;
+	            special_count = 0;
+	            for(int j=i+1; j<text_list.length;j++){
+	                if(text_list[j].equals(new_special)){
+	                    break;
+	                }
+	                else if (special.contains(text_list[j])){
+	                    counter.add(count-special_count);
+	                    special_count+=1;
+	                    count+=1;
+	                }
+	                else{
+	                    count+=1;
+	                }
+	            }
+	                
+	            }
+	            
+	        }
+	    for(int i=0;i<counter.size();i++){
+	        if(counter.get(i)>=low && counter.get(i)<=up){
+	            ans+=1;
+	        }
+	    }
+	    
+	    
+	    System.out.println(ans);
+		
+	}
+}
+
