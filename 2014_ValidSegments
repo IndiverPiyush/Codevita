@@ -1,0 +1,84 @@
+Consider text comprised of sentences and sentences comprised of words. Words in a sentence will be space delimited. Text will comprise of two types of words, viz. alpha words and beta words. Alpha words are denoted in the input. All words in the text which are non-alpha words are beta words. Task is to find out the number of valid segment with number of beta words in the given range [lb, ub].
+
+A segment is said to be valid if
+- It contains all the K-strings
+- It should start and end with any one of the K-strings
+
+Input Format: 
+First line contains the text. Next line contains K, lb, ub. Next K lines consist of alpha words in the text.
+
+Note: 
+1. String comparison should be case insensitive.
+2. String comparison should be based only on words comprised of alphabets. Non-alphabet characters such as Full Stop ("."), Exclamation Marks ("!") etc. are called as Stop words. Stop words must be removed from sentences before comparison.
+3. If more than one segment starts with the same index (i.e. position of the word in the text), then consider the shortest segment. In other words, segments should begin from unique indexes.
+
+Output Format: 
+
+Print the number of valid segments with number of beta words in the given range [lb, ub].
+
+Constraints:
+1<= total number of words in the text <= 30,000
+1<= length of alpha and beta words <= 500
+1<=K<=total number of alpha words
+1<=lb<=ub<=total number of beta words
+
+Sample Input and Output
+
+
+SNo.	                                                                           Input	                                                                            Output
+1	                                    The European market crashes on Mondays. Crashes in the European market are quite common.                                         1
+                                      2 3 4
+                                      European
+                                      Crashes	
+
+Explanation: 
+Valid segments are:
+European market crashes
+crashes on Mondays. Crashes in the European
+Crashes in the European
+
+There is only one valid segment with number of beta words in the range [3, 4], which is segment 2.
+
+
+
+
+//Python code
+
+//Written by indiver piyush
+punctuations = '''!()-[]{};:'"\,<>./?@#$%^&*_~'''
+text= input()
+counter = []
+ans  = 0
+for word in text:
+    if word in punctuations:
+        text = text.replace(word," ")
+text_lower = text.lower()
+text_list = text_lower.split()
+n , low , up = list(map(int,input().split()))
+special = []
+for _ in range(n):
+    special.append(input().lower())
+for i in range(len(text_list)):
+    if(text_list[i] in special):
+        new_special = text_list[i]
+        count = 0
+        special_count = 0
+        for j in range(i+1,len(text_list)):
+            if(text_list[ j ] == new_special):
+                break
+            elif(text_list[j] in special):
+                counter.append(count-special_count)
+                special_count += 1
+                count+=1
+            else:
+                count += 1
+for i in counter:
+    if(i>=low and i<=up):
+        ans+=1
+print(ans)
+                
+                
+               
+          
+// Java Code
+//written by indiver Piyush
