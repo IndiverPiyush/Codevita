@@ -1,0 +1,95 @@
+We have Given a list of very unique employee_ids & employee age information, your have to construct a program to support the certain operations. 
+There are 2 operations nsert and Query. You can assume  that insert operations are very unique on the employee_id column. Query operations are of THREE types. Both insert & query operations are described as follow.
+
+A {employee_id} {age} 
+Operation will add the employee_id & there age.
+Syntax: A {employee_id} {age}
+Returns: None
+
+Q 1 {employee_id} 
+Given Query will search for the records whose employee id isexactly {user_employee_id}.
+Syntax: Q 1 {employee_id}
+Returns: Boolean [ True / False ]
+
+Q 2 {employee_id} 
+Given Query will search for the records whose employee id beginning with {user_employee_id}.
+Syntax: Q 2 {employee_id}
+Returns: Total no. of count of the records which matches the search criteria.
+
+Q 3 {employee_id} {lb} {ub}
+Query will search for the records for which employee id starts with {user_employee_id} & there age is in the range (lb, ub).
+Syntax: Q 3 {employee_id} {lb} {ub}
+Returns: Total no. of the records which matches the search criteria.
+
+Input Format: 
+
+For each line
+either Add (A) or Query (Q) operation or  the end of input represents -1 .
+
+Output Format: 
+ In case of Query operation Print the total no.of resultant records
+
+Constraints:
+1 <= Total digits in the Employee ID <= 50
+20 <= Age <= 100
+10 <=lb<= 100
+lb <=ub<= 100
+Total no. of add operations <= 40000
+Total no. of query operations <= 40000
+
+Sample Input and Output
+
+ SNo.	                                                        Input                                                                	Output
+ 1	                                                          A 112345 20                                                           True
+                                                              A 112346 40                                                           2
+                                                              A 212347 40                                                           3
+                                                              A 212348 23
+                                                              A 112449 30
+                                                              Q 1 112345
+                                                              Q 2 1123
+                                                              Q 3 112 10 50
+                                                              -1
+
+
+
+//Written By Indiver Piyush
+//Python Code
+Dict = {}
+db_list = []
+while(True):
+    s = input()
+    if(s == "-1"):
+        break
+    list1 = list(map(str,s.split()))
+    if(list1[0] == "A"):
+        if(list1[1] not in db_list):
+            db_list.append(list1[1])
+            Dict[list1[1]] = list1[2]
+            
+    elif(list1[1] == "1" and list1[0]=="Q"):
+        if(list1[2] in list1):
+            print("True")
+
+    elif(list1[1] == "2" and list1[0]=="Q"):
+        n = len(list1[2])
+        count = 0
+        for i in db_list:
+            if(i[0:n] == list1[2]):
+                count+=1
+        print(count)
+
+    elif(list1[1] == "3" and list1[0]=="Q"):
+        n = len(list1[2])
+        low = list1[3]
+        up = list1[4]
+        count = 0
+        for i in db_list:
+            if(i[0:n] == list1[2]):
+                D = Dict[i]
+                if(D>low and D<up):
+                    count+=1
+        print(count)
+                
+        
+        
+        
